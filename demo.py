@@ -2,7 +2,8 @@ import time
 from cv2_detect import detect
 import cv2
 import cv2.cv as cv
- 
+import os
+import glob 
  
 def draw_rects(img, rects, color):
     for x1, y1, x2, y2 in rects:
@@ -27,7 +28,9 @@ def demo(in_fn, out_fn):
  
  
 def main():
-    demo('src/image.jpeg', 'done/image.jpeg')
+    os.chdir('src')
+    for img in glob.glob('*.jpeg'):
+        demo(img, '../done/' + img)
  
  
 if __name__ == '__main__':
