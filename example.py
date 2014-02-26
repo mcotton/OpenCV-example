@@ -2,10 +2,11 @@ import cv2
 import os
 import glob
 
-def detect(path):
+cascade = cv2.CascadeClassifier("../haarcascade_frontalface_alt.xml")
+
+def detect(path, cascade):
     img = cv2.imread(path)
-    cascade = cv2.CascadeClassifier("../haarcascade_frontalface_alt.xml")
-    rects = cascade.detectMultiScale(img, 1.2, 4, cv2.cv.CV_HAAR_SCALE_IMAGE, (20,20))
+    rects = cascade.detectMultiScale(img, 1.1, 4, cv2.cv.CV_HAAR_SCALE_IMAGE, (20,20))
 
     if len(rects) == 0:
         return [], img
@@ -20,5 +21,8 @@ def box(rects, img, output):
 os.chdir('src')
 
 for preview in glob.glob('*.jpeg'):
-    rects, img = detect(preview)
-    box(rects, img, "../done/" + preview)
+    cascade = cv2.CascadeClassifier("../haarcascade_frontalface_alt.xml")
+    rects, img = detect(preview, cascade)
+    if len(rects) > 0:
+        print rects
+        box(rects, img, "../done/" + preview)
