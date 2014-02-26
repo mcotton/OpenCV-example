@@ -1,3 +1,8 @@
 *.pyc
-*.detect.*
-
+*.swp
+done/*.jpeg
+done/*.jpg
+done/*.png
+src/*.jpeg
+src/*.jpg
+src/*.png
