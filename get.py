@@ -7,7 +7,7 @@ camera = sys.argv[3]
 
 #login and get image list
 ctx = een.login(sys.argv[1], sys.argv[2])
-img_list = ctx.image_list(esn=camera, asset_type="thumb", time=een.timestamp("now"), count=-500)
+img_list = ctx.image_list(esn=camera, asset_type="pre", time=een.timestamp("now"), count=-7200)
 
 try:
 	os.mkdir("src")
