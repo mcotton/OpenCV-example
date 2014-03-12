@@ -19,4 +19,7 @@ It draws a green box around the face and saves the image in the done foler.
 
     # start webserver to easily share files
     python -m SimpleHTTPServer 8000
+    
+    # count number of images
+    ls src/*.jpeg | wc -l
  
