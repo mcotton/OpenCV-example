@@ -2,7 +2,7 @@ import cv2
 import os
 import glob
 
-cascade = cv2.CascadeClassifier("../haarcascade_frontalface_alt.xml")
+cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
 
 def detect(path, cascade):
     img = cv2.imread(path)
@@ -20,10 +20,9 @@ def box(rects, img, output):
 
 os.chdir('src')
 
-cascade = cv2.CascadeClassifier("../haarcascade_frontalface_alt.xml")
-
 for preview in glob.glob('*.jpeg'):
     #cascade = cv2.CascadeClassifier("../haarcascade_frontalface_alt.xml")
+    print preview
     rects, img = detect(preview, cascade)
     if len(rects) > 0:
         print rects
